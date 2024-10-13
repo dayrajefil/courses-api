@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: dayrajefil
+  password: 7355608
+  host: localhost
+
+development:
+  <<: *default
+  database: courses_development
+
+test:
+  <<: *default
+  database: courses_test
+
+production:
+  <<: *default
+  database: courses_production
+  username: courses_production
+  password: <%= ENV['COURSES_DATABASE_PASSWORD'] %>
