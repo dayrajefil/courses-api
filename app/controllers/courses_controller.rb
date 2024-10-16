@@ -9,7 +9,7 @@ class CoursesController < ApplicationController
     render json: course.as_json(include: {
       videos: {
         only: [:id],
-        methods: [:filename, :size_in_mb]
+        methods: [:filename, :size_in_mb, :url]
       }
     })
   end

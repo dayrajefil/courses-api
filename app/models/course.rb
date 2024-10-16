@@ -1,7 +1,7 @@
 class Course < ApplicationRecord
   has_many :videos, dependent: :destroy
 
-  before_save :calculate_total_size
+  after_commit :calculate_total_size
 
   validates :title, :description, :start_date, :end_date, presence: true
 
@@ -20,6 +20,6 @@ class Course < ApplicationRecord
   end
 
   def calculate_total_size
-    self.total_size_in_mb = videos.sum(:size_in_mb) || 0.0
+    self.update_column(:total_size_in_mb, videos.sum(:size_in_mb) || 0.0)
   end
 end

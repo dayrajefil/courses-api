@@ -12,8 +12,8 @@ Course.create([
     end_date: '2024-05-15'
   },
   {
-    title: 'Curso de Node.js',
-    description: 'Construa aplicações com Node.js e Express.',
+    title: 'Curso de Java',
+    description: 'Construa aplicações com Java e Spring Boot.',
     start_date: '2024-02-01',
     end_date: '2024-07-01'
   }
