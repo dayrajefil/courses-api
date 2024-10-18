@@ -22,10 +22,10 @@ Courses API é um projeto desenvolvido em Ruby on Rails que permite a criação 
 
 1. **Clone o repositório:**
 
-   ```
-   git clone https://github.com/dayrajefil/courses-api.git
-   cd courses-api
-   ```
+  ```
+  git clone https://github.com/dayrajefil/courses-api.git
+  cd courses-api
+  ```
 
 2. **Instale as dependências:**
   ```
