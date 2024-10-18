@@ -37,8 +37,8 @@ Courses API é um projeto desenvolvido em Ruby on Rails que permite a criação 
 Crie um arquivo .env na raiz do projeto e adicione suas credenciais do PostgreSQL
 
   ```
-    DB_USERNAME=seu_usuario
-    DB_PASSWORD=suasenha
+  DB_USERNAME=seu_usuario
+  DB_PASSWORD=suasenha
   ```
 
 Depois, configure o banco de dados com:
