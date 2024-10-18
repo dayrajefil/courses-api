@@ -3,7 +3,8 @@ class Video < ApplicationRecord
   has_one_attached :file
 
   after_save :set_video_size, if: -> { file.attached? && !file.destroyed? }
-  after_save :set_url, if: -> { file.attached? && !file.destroyed? && new_record? }
+
+  after_commit :set_url, if: -> { file.attached? && !file.destroyed? && !url.present? }
 
   validates :file, presence: true
 
@@ -18,7 +19,6 @@ class Video < ApplicationRecord
   end
 
   def set_url
-    self.url = Rails.application.routes.url_helpers.rails_blob_url(file, only_path: true)
-    save!
+    self.update_column(:url, Rails.application.routes.url_helpers.rails_blob_url(file, host: ENV['BACKEND_URL'], only_path: false))
   end
 end

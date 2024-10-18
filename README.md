@@ -39,6 +39,8 @@ Crie um arquivo .env na raiz do projeto e adicione suas credenciais do PostgreSQ
   ```
   DB_USERNAME=seu_usuario
   DB_PASSWORD=suasenha
+  FRONTEND_URL=http://host:port
+  BACKEND_URL=http://host:port
   ```
 
 Depois, configure o banco de dados com:
