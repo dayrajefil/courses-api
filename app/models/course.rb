@@ -1,7 +1,7 @@
 class Course < ApplicationRecord
   has_many :videos, dependent: :destroy
 
-  after_commit :calculate_total_size
+  after_commit :calculate_total_size, unless: -> {destroyed?}
 
   validates :title, :description, :start_date, :end_date, presence: true
 

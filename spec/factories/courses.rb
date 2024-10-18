@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :course do
-    title { "MyString" }
-    description { "MyText" }
-    start_date { "2024-10-13" }
-    end_date { "2024-10-13" }
+    title { "My Course" }
+    description { "Course Description" }
+    start_date { Date.today }
+    end_date { Date.today + 90.days }
   end
 end

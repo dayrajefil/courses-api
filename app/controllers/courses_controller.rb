@@ -5,7 +5,9 @@ class CoursesController < ApplicationController
   end
 
   def show
-    course = Course.find(params[:id])
+    course = find_course
+    return unless course
+
     render json: course.as_json(include: {
       videos: {
         only: [:id],
@@ -24,7 +26,9 @@ class CoursesController < ApplicationController
   end
 
   def update
-    course = Course.find(params[:id])
+    course = find_course
+    return unless course
+
     if course.update(permitted_params)
       render json: { course: course, success: 'Atualizado com sucesso!'}, status: :ok
     else
@@ -33,7 +37,9 @@ class CoursesController < ApplicationController
   end
 
   def destroy
-    course = Course.find(params[:id])
+    course = find_course
+    return unless course
+
     if course.destroy
       render json: { success: 'Curso excluído com sucesso!' }, status: :ok
     else
@@ -47,6 +53,13 @@ class CoursesController < ApplicationController
     params.require(:course).permit(:title, :description, :start_date, :end_date,
       videos_attributes: [:id, :file, :_destroy]
     )
+  end
+
+  def find_course
+    Course.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    render json: { error: 'Curso não encontrado.' }, status: :not_found and return
+    nil
   end
 
   def format_errors(errors)
